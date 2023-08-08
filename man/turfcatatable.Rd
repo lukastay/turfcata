@@ -37,3 +37,16 @@ a <- turfcatatable(catadat)
 print(a)
 
 }
+\references{
+Carla Kuesten, Jian Bi,
+TURF analysis for CATA data using R package ‘turfR’,
+Food Quality and Preference,
+Volume 91,
+2021,
+104201,
+ISSN 0950-3293,
+https://doi.org/10.1016/j.foodqual.2021.104201.
+(https://www.sciencedirect.com/science/article/pii/S0950329321000288)
+Abstract: CATA (Check All That Apply) questions are one of the most popular approaches used widely in sensory and consumer fields. This paper proposes to apply the TURF (Total Unduplicated Reach and Frequency) technique to summarize and analyze CATA data. Numerical examples from a women’s multi-vitamin/mineral gummy survey conducted online recently in the US are provided to show the TURF analysis for CATA data. The R package ‘turfR’ was used in the analysis of the CATA data. An R code (‘turfcata’) was developed and is provided for the analysis using the R package ‘turfR’.
+Keywords: CATA (Check All That Apply); TURF (Total Unduplicated Reach and Frequency); Multi-vitamin/mineral gummy
+}

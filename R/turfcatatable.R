@@ -18,6 +18,27 @@
 #'
 #' @export turfcatatable
 #'
+#' @details
+#'
+#' To see how results are stored, take the following example:
+#'
+#' '"ID","weight","Flavor1","flavor2","flavor3","flavor4","flavor5","flavor6","flavor7","flavor8","flavor9","flavor10","flavor11","flavor12","flavor13","flavor14","flavor15","flavor16","flavor17","flavor18","flavor19","flavor20","flavor21"
+#' "1",1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,0,1,1,1,0,0,0
+#' "2",2,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+#' "3",3,1,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+#' "4",4,1,0,0,1,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
+#' "5",5,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,0,0,1,1,1,0,0
+#' "6",6,1,1,1,1,1,0,1,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0
+#' "7",7,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0
+#' "8",8,1,0,0,0,0,1,0,0,0,0,1,0,0,1,1,0,0,0,1,1,0,0
+#' "9",9,1,0,1,1,1,1,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0
+#' "10",10,1,0,1,0,1,1,1,1,0,0,0,0,0,1,1,0,1,0,1,0,1,0
+#' ...
+#' "198",198,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0
+# "199",199,1,0,0,1,1,1,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0
+# "200",200,1,0,1,1,0,0,0,0,0,0,1,0,1,0,1,0,0,0,1,0,0,0
+#
+#'
 #' @examples
 #'
 #' my_nested_list <- list(id=c(1,2,3,4,5),
@@ -37,13 +58,25 @@
 #'
 #' print(a)
 #'
-#' @returns Table of optimal combinations and their reach and frequencies
+#' @returns Table of optimal combinations and their reach and frequencies.
 #'
 #' @importFrom turfR turf
 #' @importFrom stats na.omit
+#' @importFrom Rdpack reprompt
 #'
-#' @returns A table of optimal combinations as well as their reach and value.
-#'
+#' @references
+#' Carla Kuesten, Jian Bi,
+#' TURF analysis for CATA data using R package ‘turfR’,
+#' Food Quality and Preference,
+#' Volume 91,
+#' 2021,
+#' 104201,
+#' ISSN 0950-3293,
+#' https://doi.org/10.1016/j.foodqual.2021.104201.
+#' (https://www.sciencedirect.com/science/article/pii/S0950329321000288)
+#' Abstract: CATA (Check All That Apply) questions are one of the most popular approaches used widely in sensory and consumer fields. This paper proposes to apply the TURF (Total Unduplicated Reach and Frequency) technique to summarize and analyze CATA data. Numerical examples from a women’s multi-vitamin/mineral gummy survey conducted online recently in the US are provided to show the TURF analysis for CATA data. The R package ‘turfR’ was used in the analysis of the CATA data. An R code (‘turfcata’) was developed and is provided for the analysis using the R package ‘turfR’.
+#' Keywords: CATA (Check All That Apply); TURF (Total Unduplicated Reach and Frequency); Multi-vitamin/mineral gummy
+
 
 turfcatatable <- function(catadat) {
 
@@ -53,8 +86,7 @@ turfcatatable <- function(catadat) {
   m <- dim(x)[2] - 2
   if (m < 17) {
     k <- m - 1
-  }
-  else{
+  } else{
     k <- 7
   }
   x <- as.data.frame(x)
