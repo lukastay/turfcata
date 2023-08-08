@@ -7,15 +7,59 @@
 turfcatatable(catadat)
 }
 \arguments{
-\item{catadat}{Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored.}
+\item{catadat}{From turfR package documentation: "Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored."
+
+#' Here is an example of how data should be entered prior to using this package:\tabular{lrrrrrrrrr}{
+   ID \tab weight \tab Flavor1 \tab flavor2 \tab flavor3 \tab flavor4 \tab flavor5 \tab flavor6 \tab flavor7 \tab flavor8 \cr
+   1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \cr
+   2 \tab 2 \tab 1 \tab 1 \tab 1 \tab 0 \tab 0 \tab 0 \tab 1 \tab 1 \cr
+   3 \tab 3 \tab 1 \tab 0 \tab 0 \tab 0 \tab 1 \tab 0 \tab 0 \tab 1 \cr
+   4 \tab 4 \tab 1 \tab 0 \tab 0 \tab 1 \tab 1 \tab 0 \tab 1 \tab 0 \cr
+   5 \tab 5 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \cr
+   6 \tab 6 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 0 \tab 1 \tab 1 \cr
+   7 \tab 7 \tab 1 \tab 0 \tab 0 \tab 0 \tab 1 \tab 0 \tab 1 \tab 0 \cr
+   8 \tab 8 \tab 1 \tab 0 \tab 0 \tab 0 \tab 0 \tab 1 \tab 0 \tab 0 \cr
+   9 \tab 9 \tab 1 \tab 0 \tab 1 \tab 1 \tab 1 \tab 1 \tab 0 \tab 1 \cr
+   10 \tab 10 \tab 1 \tab 0 \tab 1 \tab 0 \tab 1 \tab 1 \tab 1 \tab 1 \cr
+}}
 }
 \value{
-Table of optimal combinations and their reach and frequencies
+Table of optimal combinations and their reach and frequencies.
 
-A table of optimal combinations as well as their reach and value.
+Then this is the output from turfcatatable(function) for the data from the details section:\tabular{lrrrrrrr}{
+    \tab 1 \tab 2 \tab 3 \tab 4 \tab 5 \tab 6 \tab 7 \cr
+   Reach \tab 0.0581395 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   Frequency \tab 1.0000000 \tab 1.818182 \tab 2.472727 \tab 3.109091 \tab 3.709091 \tab 4.309091 \tab 4.763636 \cr
+   1 \tab 1.0000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   2 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \cr
+   3 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   4 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \cr
+   5 \tab 0.0000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   6 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \cr
+   7 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   8 \tab 0.0000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+}
+
+
+One reads the table by first looking at a column. The number of each column corrosponds to how many items are in the combination. Remember, TURF only attempts to tell you the best combination for any given number of items in the combination. But, it cannot tell you how many items should be in the combination. So, going back to the table, the 1 column corresponds with having only one item in the combination.  In this case, there is a 1 next to option 1. This means that if you're only going to choose one option, it should be option 1. The next column shows you the two options that you should choose if you're only going to choose two options, and so on. The chosen options in each column have a 1 instead of a 0.
+
+The reach and frequency are on the top of the table.
 }
 \description{
 turfcatatable
+}
+\details{
+NOTE: This code is a simple add-on to code from "TURF analysis for CATA data using R package ‘turfR’" by Carla Kuestena and Jian Bi. This code adds R-Markdown table formatting as well as reach and frequency values in the table.
+
+This package takes in "Check All That Apply" data, or CATA data, and returns a a TURF analysis chart. Check all that apply data is when a respondent in a survey is asked to choose all the results that meet the given criteria in a question. This data can be used in marketing and advertisement to determine the best choices when choosing multiple strategies at the same time. For instance, one can ask what scent of candle one likes. Upon gathering surveys across a representative sample, the firm can reach a maximum number of unique customers by using a turf analysis. The turf analysis will tell them how to maximize reach. Although TURF can give advice for which survey answers the firm should focus on for any given number of choices to persue at the same time, TURF cannot tell the firm what the number of items that they should invest in. Optimal combinations are chosen primarily by reach, which is the percent of customers that will be attracted by at least one of the chosen strategies.
+
+As explained by Carla Kuesten and Jian Bi:
+"TURF, i.e., Total Unduplicated Reach and Frequency, is a statistical model. It can be used for selecting the optimum combinations from the huge numbers of possible combinations. There are two criteria for optimization: Reach and Frequency. Reach is the number of the re- spondents who mentioned at least one of the terms in a combination. Frequency is the total number of mentions of the terms in a combination."
+-"TURF analysis for CATA data using R package ‘turfR’" by Carla Kuesten and Jian Bi
+
+Let's say a firm is selling scented candles, in this case, reach is the number of respondents who answered at least one of the scents in the combination (we can calculate this as a percentage), not double counting for respondents who chose multiple scents in the combination. Frequency is the number of times times all scents in the combination were chosen, including double (or triple or more) counting for respondents who chose multiple scents in the combination.
+
+Optimal bundles for each maximum number of options are calculated by reach, using frequency only as a tiebreaker.
 }
 \examples{
 
@@ -27,14 +71,9 @@ choice3 = c(0,1,0,1,1),
 choice4 = c(0,1,0,1,1),
 choice5 = c(1,1,1,1,1))
 
-
 catadat <-  as.data.frame(do.call(cbind, my_nested_list))
 
-print(catadat)
-
-a <- turfcatatable(catadat)
-
-print(a)
+turfcatatable(catadat)
 
 }
 \references{

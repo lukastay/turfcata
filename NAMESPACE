@@ -2,5 +2,6 @@
 
 export(turfcatatable)
 importFrom(Rdpack,reprompt)
+importFrom(insight,export_table)
 importFrom(stats,na.omit)
 importFrom(turfR,turf)
