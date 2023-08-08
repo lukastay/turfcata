@@ -72,18 +72,18 @@
 #'
 #' Then this is the output from turfcatatable(function) for the data from the details section:
 #'
-#' |          |         1|        2|        3|        4|        5|        6|        7|
-#' |:---------|---------:|--------:|--------:|--------:|--------:|--------:|--------:|
-#'   |Reach     | 0.0581395| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
-#'   |Frequency | 1.0000000| 1.818182| 2.472727| 3.109091| 3.709091| 4.309091| 4.763636|
-#'   |1         | 1.0000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
-#'   |2         | 0.0000000| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000|
-#'   |3         | 0.0000000| 0.000000| 0.000000| 0.000000| 1.000000| 1.000000| 1.000000|
-#'   |4         | 0.0000000| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000| 1.000000|
-#'   |5         | 0.0000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
-#'   |6         | 0.0000000| 0.000000| 0.000000| 0.000000| 0.000000| 1.000000| 1.000000|
-#'   |7         | 0.0000000| 0.000000| 0.000000| 1.000000| 1.000000| 1.000000| 1.000000|
-#'   |8         | 0.0000000| 0.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
+#' |          |  1|        2|        3|        4|        5|        6|        7|
+#' |:---------|--:|--------:|--------:|--------:|--------:|--------:|--------:|
+#'   |Reach     |  1| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
+#'   |Frequency |  1| 1.818182| 2.472727| 3.109091| 3.709091| 4.309091| 4.763636|
+#'   |1         |  1| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
+#'   |2         |  0| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000|
+#'   |3         |  0| 0.000000| 0.000000| 0.000000| 1.000000| 1.000000| 1.000000|
+#'   |4         |  0| 0.000000| 0.000000| 0.000000| 0.000000| 0.000000| 1.000000|
+#'   |5         |  0| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
+#'   |6         |  0| 0.000000| 0.000000| 0.000000| 0.000000| 1.000000| 1.000000|
+#'   |7         |  0| 0.000000| 0.000000| 1.000000| 1.000000| 1.000000| 1.000000|
+#'   |8         |  0| 0.000000| 1.000000| 1.000000| 1.000000| 1.000000| 1.000000|
 #'
 #' One reads the table by first looking at a column. The number of each column corrosponds to how many items are in the combination. Remember, TURF only attempts to tell you the best combination for any given number of items in the combination. But, it cannot tell you how many items should be in the combination. So, going back to the table, the 1 column corresponds with having only one item in the combination.  In this case, there is a 1 next to option 1. This means that if you're only going to choose one option, it should be option 1. The next column shows you the two options that you should choose if you're only going to choose two options, and so on. The chosen options in each column have a 1 instead of a 0.
 #'
@@ -91,10 +91,7 @@
 #'
 #' @md
 #'
-#' @importFrom turfR turf
-#' @importFrom stats na.omit
-#' @importFrom Rdpack reprompt
-#' @importFrom insight export_table
+#' @importFrom knitr kable
 #'
 #' @references
 #' Carla Kuesten, Jian Bi,
@@ -120,50 +117,8 @@
 
 turfcatatable <- function(catadat) {
 
-  x <- catadat
-  m <- dim(x)[2] - 2
-  if (m < 17) {
-    k <- m - 1
-  } else{
-    k <- 7
-  }
-  x <- as.data.frame(x)
-  x <- na.omit(x)
-  d <- dim(x)
-  # cat(d, "\n")
-  Turfexam <- turf(x, m, 2:k)
-  a <- matrix(0, m + 2, k - 1)
-  dimnames(a) <-
-    list(c("Reach", "Frequency", seq(1, m)), c(seq(2, k)))
-  for (i in 1:(k - 1)) {
-    a[, i] <- as.numeric(as.vector(Turfexam$turf[[i]][1, ])[2:(m + 3)])
-  }
-  b <- matrix(0, m, 2)
-  b[, 1] <- seq(1, m)
-  b[, 2] <- apply(x[, 3:(m + 2)], 2, sum)
-  b <- b[rev(sort.list(b[, 2])),]
-  b <- cbind(b, c(1, rep(0, m - 1)))
-  b <- b[sort.list(b[, 1]),]
+  ab <- turfcalc(catadat)
 
-
-
-
-
-  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ##  ~ NEW CODE TO ADD REACH AND FREQUENCY  ----
-  ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  #........................Calculating.......................
-
-  reach1 <-  max(b[, 2]) / length(unlist(catadat[, 1]))
-
-  combo_one_column <- c(reach1, reach1, b[, 3])
-
-  ab <- cbind(combo_one_column, a[1:(m + 2),])
-  dimnames(ab)[[2]][1] <- "1"
-
-  #........................Printing Result.........................
-
-  export_table(ab, format = "md")
+  kable(ab, format = "markdown")
 
 }

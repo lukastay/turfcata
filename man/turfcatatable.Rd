@@ -9,7 +9,7 @@ turfcatatable(catadat)
 \arguments{
 \item{catadat}{From turfR package documentation: "Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored."
 
-#' Here is an example of how data should be entered prior to using this package:\tabular{lrrrrrrrrr}{
+Here is an example of how data should be entered prior to using this package:\tabular{lrrrrrrrrr}{
    ID \tab weight \tab Flavor1 \tab flavor2 \tab flavor3 \tab flavor4 \tab flavor5 \tab flavor6 \tab flavor7 \tab flavor8 \cr
    1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \cr
    2 \tab 2 \tab 1 \tab 1 \tab 1 \tab 0 \tab 0 \tab 0 \tab 1 \tab 1 \cr
@@ -28,16 +28,16 @@ Table of optimal combinations and their reach and frequencies.
 
 Then this is the output from turfcatatable(function) for the data from the details section:\tabular{lrrrrrrr}{
     \tab 1 \tab 2 \tab 3 \tab 4 \tab 5 \tab 6 \tab 7 \cr
-   Reach \tab 0.0581395 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
-   Frequency \tab 1.0000000 \tab 1.818182 \tab 2.472727 \tab 3.109091 \tab 3.709091 \tab 4.309091 \tab 4.763636 \cr
-   1 \tab 1.0000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
-   2 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \cr
-   3 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
-   4 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \cr
-   5 \tab 0.0000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
-   6 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \cr
-   7 \tab 0.0000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
-   8 \tab 0.0000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   Reach \tab 1 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   Frequency \tab 1 \tab 1.818182 \tab 2.472727 \tab 3.109091 \tab 3.709091 \tab 4.309091 \tab 4.763636 \cr
+   1 \tab 1 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   2 \tab 0 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \cr
+   3 \tab 0 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   4 \tab 0 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \cr
+   5 \tab 0 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   6 \tab 0 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \cr
+   7 \tab 0 \tab 0.000000 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
+   8 \tab 0 \tab 0.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \tab 1.000000 \cr
 }
 
 
