@@ -14,14 +14,35 @@
 ##
 #' @title turfcatatable
 #'
-#' @param catadat CATA Dataframe
+#' @param catadat Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored.
 #'
 #' @export turfcatatable
+#'
+#' @examples
+#'
+#' my_nested_list <- list(id=c(1,2,3,4,5),
+#' weight=c(1,1,1,1,1),
+#' choice1 = c(0,0,1,1,0),
+#' choice2 = c(1,0,0,1,1),
+#' choice3 = c(0,1,0,1,1),
+#' choice4 = c(0,1,0,1,1),
+#' choice5 = c(1,1,1,1,1))
+#'
+#'
+#' catadat <-  as.data.frame(do.call(cbind, my_nested_list))
+#'
+#' print(catadat)
+#'
+#' a <- turfcatatable(catadat)
+#'
+#' print(a)
 #'
 #' @returns Table of optimal combinations and their reach and frequencies
 #'
 #' @importFrom turfR turf
 #' @importFrom stats na.omit
+#'
+#' @returns A table of optimal combinations as well as their reach and value.
 #'
 
 turfcatatable <- function(catadat) {
@@ -85,5 +106,5 @@ turfcatatable <- function(catadat) {
   ab<-cbind(combo_one_column,a[1:(m+2),])
   dimnames(ab)[[2]][1]<-"1"
 
-  ab
+  return(ab)
 }
