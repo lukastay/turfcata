@@ -4,11 +4,17 @@ R package for making turf tables and waterfall charts for "choose all that apply
 ![https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pewresearch.org%2Fmethods%2F2019%2F05%2F09%2Fwhen-online-survey-respondents-only-select-some-that-apply%2F&psig=AOvVaw1NUc7ws4dSGHoqXYpSHZcO&ust=1691643390857000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJDkju3kzoADFQAAAAAdAAAAABAE](https://www.pewresearch.org/methods/wp-content/uploads/sites/10/2019/05/PM_19.05.29_featured.png)
 Image from "When Online Survey Respondents Only ‘Select Some That Apply’" by Pew Research Center
 
+------Package Overview
+
 This package takes in "Check All That Apply" data, or CATA data, and returns a a TURF analysis chart. Check all that apply data is when a respondent in a survey is asked to choose all the results that meet the given criteria in a question. This data can be used in marketing and advertisement to determine the best choices when choosing multiple strategies at the same time. For instance, one can ask what scent of candle one likes. Upon gathering surveys across a representative sample, the firm can reach a maximum number of unique customers by using a turf analysis. The turf analysis will tell them how to maximize reach. Although TURF can give advice for which survey answers the firm should focus on for any given number of choices to persue at the same time, TURF cannot tell the firm what the number of items that they should invest in. Optimal combinations are chosen primarily by reach, which is the percent of customers that will be attracted by at least one of the chosen strategies.
+
+------TURF and Reach vs. Frequency
 
 As explained by Carla Kuesten and Jian Bi:
 > "TURF, i.e., Total Unduplicated Reach and Frequency, is a statistical model. It can be used for selecting the optimum combinations from the huge numbers of possible combinations. There are two criteria for optimization: Reach and Frequency. Reach is the number of the re- spondents who mentioned at least one of the terms in a combination. Frequency is the total number of mentions of the terms in a combination."
 > -"TURF analysis for CATA data using R package ‘turfR’" by Carla Kuesten and Jian Bi
+
+------Instalation
 
 To install, type the following two commands into an R script or in the console.
 
@@ -18,6 +24,8 @@ install_github("lukastay/turfcata")
 library(turfcata)
 ```
 
+------Dataset Preperation
+
 This package is for working with "choose all that apply" survey type questions. This package requires raw data from these questions. You will need a dataframe suitable for the turfR library. Each row should represent a single respondent to the survey. Its columns should be:
 
 1) A identifier column
@@ -25,6 +33,8 @@ This package is for working with "choose all that apply" survey type questions. 
 3) 3 or more columns for each of the possible answers to the question. With 1s if the respondent chose the answer and 0 otherwise.
 
 See the final table on this page for an example of a dataframe ready for turfR.
+
+------Quickstart Guide
 
 There are two main functions of this package:
 
@@ -65,7 +75,7 @@ turfwaterfall(dataframe)
 
 This code also creates waterfall tables to see how much reach rises with each increase in the maximum number of items in the combination.
 
-------Importing data:
+------More Detail: Importing data:
 
 From turfR package documentation: "Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored."
 
@@ -84,11 +94,11 @@ Here is an example of how data should be entered prior to using this package:
    |9  |      9|       1|       0|       1|       1|       1|       1|       0|       1|
    |10 |     10|       1|       0|       1|       0|       1|       1|       1|       1|
 
-------Reach vs. Frequency Example
+------More Detail: Reach vs. Frequency Example
 
 Let's say a firm is selling scented candles, in this case, reach is the number of respondents who answered at least one of the scents in the combination (we can calculate this as a percentage), not double counting for respondents who chose multiple scents in the combination. Frequency is the number of times times all scents in the combination were chosen, including double (or triple or more) counting for respondents who chose multiple scents in the combination.
 
-------Note on optimal bundles
+------More Detail: Note on optimal bundles
 
 Optimal bundles for each maximum number of options are calculated by reach, using frequency only as a tiebreaker.
 
