@@ -12,6 +12,6 @@ This code builds upon code released in "TURF analysis for CATA data using R pack
 
 2) Creating waterfall charts from turf tables
 
-![waterfall example](https://github.com/lukastay/turfcata/waterfall.png?raw=true)
+![waterfall example](waterfall.tiff?raw=true)
 
 This code also creates waterfall tables to see how much reach rises with each increase in the maximum number of items in the combination.
