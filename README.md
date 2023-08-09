@@ -5,13 +5,13 @@ This package is for working with "choose all that apply" survey type questions. 
 
 1) Displaying turf tables
 
-![turf table example](https://github.com/lukastay/turfcata/turftable_example.jpeg?raw=true)
+![turf table example](https://github.com/lukastay/turfcata/turftable_example.jpeg)
 
 
 This code builds upon code released in "TURF analysis for CATA data using R package ‘turfR’" by Carla Kuestena and Jian Bib. This package amends the code so reach and frequency are both expressed for each combination number.
 
 2) Creating waterfall charts from turf tables
 
-![waterfall example](https://github.com/lukastay/turfcata/waterfall_examples.tiff?raw=true)
+![waterfall example](https://github.com/lukastay/turfcata/waterfall_examples.tiff)
 
 This code also creates waterfall tables to see how much reach rises with each increase in the maximum number of items in the combination.
