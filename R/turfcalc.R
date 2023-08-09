@@ -1,4 +1,3 @@
-##
 #' @title turfcalc
 #'
 #' @param catadat

@@ -2,7 +2,9 @@
 
 export(turfcalc)
 export(turfcatatable)
+export(turfwaterfall)
 importFrom(Rdpack,reprompt)
 importFrom(knitr,kable)
 importFrom(stats,na.omit)
 importFrom(turfR,turf)
+importFrom(waterfalls,waterfall)
