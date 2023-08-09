@@ -1,7 +1,7 @@
 Package: TURFCATA
 Type: Package
 Title: Creates TURF Table For CATA Data
-Version: 0.8.0
+Version: 0.8.1
 Author: Lukas Taylor
 Maintainer: Lukas Taylor <lukastay@umich.edu>
 Description: Based on the paper "TURF analysis for CATA data using R package ‘turfR’" by Carla Kuestena and Jian Bi.

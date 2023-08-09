@@ -10,6 +10,7 @@ turfwaterfall(
   adding = FALSE,
   top_horizontal_line = TRUE,
   vertical_lines = TRUE,
+  middle_horizontal_line = TRUE,
   y_axis_label = "Reach After Adding Item (\%)",
   x_axis_label = "Adding Item To Combination"
 )
@@ -24,6 +25,8 @@ turfwaterfall(
 \item{top_horizontal_line}{Set to TRUE or FALSE depending on if you want a black line at 1.0. TRUE by default.}
 
 \item{vertical_lines}{Set to TRUE or FALSE depending on if you want a dashed line between each bar. TRUE by default.}
+
+\item{middle_horizontal_line}{Set to TRUE to add horizontal line intersecting the x-axis at .5. Set to True by default.}
 
 \item{y_axis_label}{String for y axis label. Defaults to "Reach After Adding Item (\%)". Set to FALSE for no y axis label.}
 
