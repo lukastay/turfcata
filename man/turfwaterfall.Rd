@@ -32,3 +32,18 @@ turfwaterfall
 \details{
 Plots waterfall graph for reach as you add variables.
 }
+\examples{
+
+my_nested_list <- list(id=c(1,2,3,4,5),
+weight=c(1,1,1,1,1),
+choice1 = c(0,0,1,1,0),
+choice2 = c(1,0,0,1,1),
+choice3 = c(0,1,0,1,1),
+choice4 = c(0,1,0,1,1),
+choice5 = c(1,1,1,1,1))
+
+catadat <-  as.data.frame(do.call(cbind, my_nested_list))
+
+turfwaterfall(catadat)
+
+}

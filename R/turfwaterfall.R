@@ -31,6 +31,20 @@
 #'
 #' @md
 #'
+#' @examples
+#'
+#' my_nested_list <- list(id=c(1,2,3,4,5),
+#' weight=c(1,1,1,1,1),
+#' choice1 = c(0,0,1,1,0),
+#' choice2 = c(1,0,0,1,1),
+#' choice3 = c(0,1,0,1,1),
+#' choice4 = c(0,1,0,1,1),
+#' choice5 = c(1,1,1,1,1))
+#'
+#' catadat <-  as.data.frame(do.call(cbind, my_nested_list))
+#'
+#' turfwaterfall(catadat)
+#'
 #' @importFrom waterfalls waterfall
 
 turfwaterfall <- function(catadat){
@@ -62,8 +76,6 @@ turfwaterfall <- function(catadat){
   for (col in 0:length(turfcalced[1, ])) {
     variable_number <- 1
 
-    # print(turfcalced[3:length(turfcalced[, 1]), col])
-
     for (cell in turfcalced[3:length(turfcalced[, 1]), col]) {
       if (cell == 1) {
         if (variable_number %in% already_added) {
@@ -89,7 +101,7 @@ turfwaterfall <- function(catadat){
     }
 
   }
-  ordered_labels
+
   return(waterfall(values = values_after, labels = ordered_labels))
 
 }
