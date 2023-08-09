@@ -1,7 +1,7 @@
 Package: TURFCATA
 Type: Package
 Title: Creates TURF Table For CATA Data
-Version: 0.7.0
+Version: 0.8.0
 Author: Lukas Taylor
 Maintainer: Lukas Taylor <lukastay@umich.edu>
 Description: Based on the paper "TURF analysis for CATA data using R package ‘turfR’" by Carla Kuestena and Jian Bi.
@@ -10,8 +10,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
-Imports: turfR, Rdpack, knitr, waterfalls
+Imports: turfR, Rdpack, knitr, waterfalls, cowplot, ggplot2
 Remotes: turfR/turf
 URL: https://remotes.r-lib.org
 RdMacros: Rdpack
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "roxyglobals::global_roclet"))
