@@ -24,6 +24,8 @@ This package is for working with "choose all that apply" survey type questions. 
 2) A weight column (if you don't want to weight it, send a column full of 1s)
 3) 3 or more columns for each of the possible answers to the question. With 1s if the respondent chose the answer and 0 otherwise.
 
+See the final table on this page for an example of a dataframe ready for turfR.
+
 There are two main functions of this package:
 
 1) Displaying turf tables
@@ -64,6 +66,7 @@ turfwaterfall(dataframe)
 This code also creates waterfall tables to see how much reach rises with each increase in the maximum number of items in the combination.
 
 ------Importing data:
+
 From turfR package documentation: "Required. Literal character string representing name of a file in the working directory readable using read.table(data, header=TRUE), or name of a data frame or matrix in R containing TURF data. Rows are individuals (respondents). Columns are (1) respondent identifier, (2) a weight variable, and a minimum of n columns containing only zeroes and ones, each representing an individual item in the TURF algorithm. Respondent identifiers need not be unique and weights need not sum to the total number of rows. In the absence of any weight variable, substitute a column of ones. Ones in the remaining columns indicate that the reach criterion was met for a given item by a given individual. Values other than zero or one in these columns (including NA) trigger an error. data may contain more than n + 2 columns, but any columns in addition to that number will be ignored."
 
 Here is an example of how data should be entered prior to using this package:
@@ -82,8 +85,13 @@ Here is an example of how data should be entered prior to using this package:
    |10 |     10|       1|       0|       1|       0|       1|       1|       1|       1|
 
 ------Reach vs. Frequency Example
-#' Let's say a firm is selling scented candles, in this case, reach is the number of respondents who answered at least one of the scents in the combination (we can calculate this as a percentage), not double counting for respondents who chose multiple scents in the combination. Frequency is the number of times times all scents in the combination were chosen, including double (or triple or more) counting for respondents who chose multiple scents in the combination.
+
+Let's say a firm is selling scented candles, in this case, reach is the number of respondents who answered at least one of the scents in the combination (we can calculate this as a percentage), not double counting for respondents who chose multiple scents in the combination. Frequency is the number of times times all scents in the combination were chosen, including double (or triple or more) counting for respondents who chose multiple scents in the combination.
+
 ------Note on optimal bundles
+
 Optimal bundles for each maximum number of options are calculated by reach, using frequency only as a tiebreaker.
+
 ------Further reading
+
 For full documentation on the package, see the manuals in the "man" folder.
