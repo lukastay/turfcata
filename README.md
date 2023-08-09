@@ -1,4 +1,4 @@
-# turfcata
+# turfcata by Lukas Taylor
 R package for making turf tables and waterfall charts for "choose all that apply" type survey data.
 
 ![https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pewresearch.org%2Fmethods%2F2019%2F05%2F09%2Fwhen-online-survey-respondents-only-select-some-that-apply%2F&psig=AOvVaw1NUc7ws4dSGHoqXYpSHZcO&ust=1691643390857000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJDkju3kzoADFQAAAAAdAAAAABAE](https://www.pewresearch.org/methods/wp-content/uploads/sites/10/2019/05/PM_19.05.29_featured.png)
