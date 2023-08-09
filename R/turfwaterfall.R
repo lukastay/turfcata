@@ -33,10 +33,13 @@
 #'
 #' @importFrom waterfalls waterfall
 
-turfwaterfall <- function(catadat) {
+turfwaterfall <- function(catadat){
+
   labels <- names(catadat)[3:length(names(catadat))]
 
-  values_before <- catadat[1, ]
+  turfcalced <- turfcalc(catadat)
+
+  values_before <- turfcalced[1, ]
 
   values_place <- 0
   firsttime <- 1
@@ -56,10 +59,12 @@ turfwaterfall <- function(catadat) {
 
   first <- 1
 
-  for (col in 0:length(catadat[1, ])) {
+  for (col in 0:length(turfcalced[1, ])) {
     variable_number <- 1
 
-    for (cell in catadat[3:length(catadat[, 1]), col]) {
+    # print(turfcalced[3:length(turfcalced[, 1]), col])
+
+    for (cell in turfcalced[3:length(turfcalced[, 1]), col]) {
       if (cell == 1) {
         if (variable_number %in% already_added) {
           i <- 1
@@ -84,7 +89,7 @@ turfwaterfall <- function(catadat) {
     }
 
   }
-
+  ordered_labels
   return(waterfall(values = values_after, labels = ordered_labels))
 
 }
